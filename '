@@ -1,0 +1,17 @@
+import { useState } from 'react';
+
+function App() {
+  const [ counter, setCounter ] = useState(0);
+  const handleButtonClick = (_) => {
+    console.log(counter);
+    // setCounter(counter + 1);
+  }
+
+  return (
+    <div>
+      <button onClick={handleButtonClick}>{counter}</button>
+    </div>
+  )
+}
+
+export default App;

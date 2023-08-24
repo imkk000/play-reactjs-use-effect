@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import ChildComponent from './ChildComponent';
 
 function App() {
+  const [counter, setCounter] = useState(1);
+  const [childCounter, setChildCounter] = useState(0);
+  const [flag, setFlag] = useState(false);
+
+  const handleButtonClick = (_) => {
+    setCounter(counter + 1);
+    if (counter % 5 === 0) {
+      setChildCounter(childCounter + 1);
+    }
+    if (counter % 10 === 0) {
+      setFlag(!flag);
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={handleButtonClick}>{counter}</button>
+      <ChildComponent flag={flag} counter={childCounter} />
     </div>
-  );
+  )
 }
 
 export default App;
